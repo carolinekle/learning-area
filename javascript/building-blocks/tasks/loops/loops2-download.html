@@ -20,9 +20,6 @@
 
     <section class="preview">
 
-      <label for="search">Search by contact name: </label>
-      <input id="search" type="text" />
-      <button>Search</button>
 
 
     </section>
@@ -30,7 +27,9 @@
   </body>
   <script>
 
+
     const name = 'Mustafa';
+    const para = document.querySelector('p');
     const phonebook = [
       { name : 'Chris', number : '1549' },
       { name : 'Li Kang', number : '9634' },
@@ -42,27 +41,17 @@
       { name : 'Jada', number : '2282' },
     ]
 
-    let para = document.querySelector('p');
-    const input = document.querySelector('input');
-    const btn = document.querySelector('button');
 
-      btn.addEventListener('click', () => {
-        const searchName = input.value.toLowerCase();
-        input.value = '';
-        input.focus();
-        para.textContent = '';
-        for (const contact of phonebook) {
-          let para = document.createElement('p');
-          if (name.toLowerCase() === searchName) {
-            para.innerText = `${this.name}'s number is ${this.number}.`;
-            document.querySelector('section').appendChild(para);
-            break;
-          }
-        }
-        if (name === '') {
-        para.textContent = 'Contact not found.';
-      }
-      });
+    for (let i = 0; i < phonebook.length; i++) {
+  if(phonebook[i].name === name) {
+    para.textContent = `${ phonebook[i].name }'s number is ${ phonebook[i].number }.`;
+    break;
+  }
+
+  if(i === phonebook.length - 1) {
+    para.textContent = 'Name not found in the phonebook';
+  }
+}
 
     // Don't edit the code below here!
     const section = document.querySelector('section');
